@@ -2,10 +2,7 @@ package com.ecommerce.project.controller;
 
 import com.ecommerce.project.model.Category;
 import com.ecommerce.project.service.CategoryService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +23,11 @@ public class CategoryController {
 
     @PostMapping("/api/admin/category")
     public void createCategory(@RequestBody Category category){
-
         categoryService.createCategory(category);
+    }
+
+    @DeleteMapping("/api/admin/category/{categoryId}")
+    public String deleteCategory(@PathVariable Long categoryId){
+        return categoryService.deleteCategory(categoryId);
     }
 }

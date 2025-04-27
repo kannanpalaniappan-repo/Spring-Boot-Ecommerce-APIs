@@ -23,7 +23,10 @@ public class CategoryController {
     }
 
     @GetMapping("/public/categories")
-    public ResponseEntity<CategoryResponse> getAllCategories(){
+    public ResponseEntity<CategoryResponse> getAllCategories(
+            @RequestParam(name="pageNumber") Integer pageNumber,
+            @RequestParam(name="pageSize") Integer pageSize
+    ){
         CategoryResponse categoryResponse = categoryService.getAllCategories();
         return new ResponseEntity<>(categoryResponse,HttpStatus.OK);
     }
